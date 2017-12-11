@@ -15,11 +15,25 @@
                       @endforeach
                     </div>
                   @endif
-                  <form action="{{route('cliente.store')}}" method="post">
+                  <form class="form-horizontal" action="{{route('cliente.store')}}" method="post">
                     {{ csrf_field() }}
-                    <input type="text" name="nome">
-                    <button class="btn btn-info">Salvar</button>
-
+                    <div class="form-group">
+                      <label class="col-md-4 control-label">Nome</label>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" name="nome" value="{{old('nome')}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4 control-label">E-mail</label>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" name="email" value="{{old('email')}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-md-offset-4">
+                        <button class="btn btn-info">Salvar</button>
+                      </div>
+                    </div>
                   </form>
                 </div>
             </div>
