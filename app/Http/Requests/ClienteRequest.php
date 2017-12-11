@@ -40,7 +40,7 @@ class ClienteRequest extends FormRequest
     {
         return [
           'nome'=>'required|min:5|max:100',
-          'email'=>'required|max:100|email|unique:users',
+          'email'=>'sometimes|required|max:100|email|unique:users',
           'imagem'=>'required|mimes:jpeg'
         ];
     }
