@@ -8,7 +8,19 @@
                 <div class="panel-heading">Validação de dados com Laravel</div>
 
                 <div class="panel-body">
+                  @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                      @foreach($errors->all() as $erros)
+                        <li>{{$erros}}</li>
+                      @endforeach
+                    </div>
+                  @endif
+                  <form action="{{route('cliente.store')}}" method="post">
+                    {{ csrf_field() }}
+                    <input type="text" name="nome">
+                    <button class="btn btn-info">Salvar</button>
 
+                  </form>
                 </div>
             </div>
         </div>
