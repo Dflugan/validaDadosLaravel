@@ -17,16 +17,26 @@
                   @endif
                   <form class="form-horizontal" action="{{route('cliente.store')}}" method="post">
                     {{ csrf_field() }}
-                    <div class="form-group">
+                    <div class="form-group {{$errors->has('nome') ? 'has-error' : ''}}">
                       <label class="col-md-4 control-label">Nome</label>
                       <div class="col-md-6">
                         <input type="text" class="form-control" name="nome" value="{{old('nome')}}">
+                        @if($errors->has('nome'))
+                          <span class="help-block">
+                            <strong>{{$errors->first('nome')}}</strong>
+                          </span>
+                        @endif
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{$errors->has('nome') ? 'has-error' : ''}}">
                       <label class="col-md-4 control-label">E-mail</label>
                       <div class="col-md-6">
                         <input type="text" class="form-control" name="email" value="{{old('email')}}">
+                        @if($errors->has('email'))
+                        <span class="help-block">
+                          <strong>{{$errors->first('email')}}</strong>
+                        </span>
+                        @endif
                       </div>
                     </div>
                     <div class="form-group">
