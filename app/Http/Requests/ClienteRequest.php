@@ -27,7 +27,8 @@ class ClienteRequest extends FormRequest
         'email.max'=>'Máximo de 100 caracteres',
         'email.email'=>'Prencha com um E-mail válido',
         'imagem.required'=>'Enviar uma imagem',
-        'imagem.mimes'=>'Imagens somente JPEG'
+        'imagem.mimes'=>'Imagens somente JPEG',
+        'num_par'=>'Somente numeros pares'
       ];
     }
 
@@ -41,7 +42,8 @@ class ClienteRequest extends FormRequest
         return [
           'nome'=>'required|min:5|max:100',
           'email'=>'sometimes|required|max:100|email|unique:users',
-          'imagem'=>'required|mimes:jpeg'
+          'imagem'=>'required|mimes:jpeg',
+          'numero'=>'num_par'
         ];
     }
 }

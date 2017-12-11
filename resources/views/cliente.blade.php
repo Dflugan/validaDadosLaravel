@@ -50,6 +50,17 @@
                         @endif
                       </div>
                     </div>
+                    <div class="form-group {{$errors->has('numero') ? 'has-error' : ''}}">
+                      <label class="col-md-4 control-label">Numero</label>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" name="numero" value="{{old('numero')}}">
+                        @if($errors->has('numero'))
+                        <span class="help-block">
+                          <strong>{{$errors->first('numero')}}</strong>
+                        </span>
+                        @endif
+                      </div>
+                    </div>
                     <div class="form-group">
                       <div class="col-md-6 col-md-offset-4">
                         <button class="btn btn-info">Salvar</button>
