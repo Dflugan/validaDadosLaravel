@@ -28,7 +28,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="form-group {{$errors->has('nome') ? 'has-error' : ''}}">
+                    <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
                       <label class="col-md-4 control-label">E-mail</label>
                       <div class="col-md-6">
                         <input type="text" class="form-control" name="email" value="{{old('email')}}">

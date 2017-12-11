@@ -23,6 +23,7 @@ class ClienteRequest extends FormRequest
         'nome.min'=>'Minimo de 5 caracteres',
         'nome.max'=>'Máximo de 100 caracteres',
         'email.required'=>'Prencha um E-mail',
+        'email.unique'=>'Esse e-mail já existe em nosso sistema',
         'email.max'=>'Máximo de 100 caracteres',
         'email.email'=>'Prencha com um E-mail válido',
         'imagem.required'=>'Enviar uma imagem',
@@ -39,7 +40,7 @@ class ClienteRequest extends FormRequest
     {
         return [
           'nome'=>'required|min:5|max:100',
-          'email'=>'required|max:100|email',
+          'email'=>'required|max:100|email|unique:users',
           'imagem'=>'required|mimes:jpeg'
         ];
     }
