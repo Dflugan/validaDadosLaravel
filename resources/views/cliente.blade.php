@@ -15,7 +15,7 @@
                       @endforeach
                     </div>
                   @endif
-                  <form class="form-horizontal" action="{{route('cliente.store')}}" method="post">
+                  <form class="form-horizontal" action="{{route('cliente.store')}}" enctype="multipart/form-data" method="post">
                     {{ csrf_field() }}
                     <div class="form-group {{$errors->has('nome') ? 'has-error' : ''}}">
                       <label class="col-md-4 control-label">Nome</label>
@@ -35,6 +35,17 @@
                         @if($errors->has('email'))
                         <span class="help-block">
                           <strong>{{$errors->first('email')}}</strong>
+                        </span>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group {{$errors->has('imagem') ? 'has-error' : ''}}">
+                      <label class="col-md-4 control-label">Imagem</label>
+                      <div class="col-md-6">
+                        <input type="file" class="form-control" name="imagem">
+                        @if($errors->has('imagem'))
+                        <span class="help-block">
+                          <strong>{{$errors->first('imagem')}}</strong>
                         </span>
                         @endif
                       </div>

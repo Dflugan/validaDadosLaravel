@@ -25,6 +25,8 @@ class ClienteRequest extends FormRequest
         'email.required'=>'Prencha um E-mail',
         'email.max'=>'Máximo de 100 caracteres',
         'email.email'=>'Prencha com um E-mail válido',
+        'imagem.required'=>'Enviar uma imagem',
+        'imagem.mimes'=>'Imagens somente JPEG'
       ];
     }
 
@@ -37,7 +39,8 @@ class ClienteRequest extends FormRequest
     {
         return [
           'nome'=>'required|min:5|max:100',
-          'email'=>'required|max:100|email'
+          'email'=>'required|max:100|email',
+          'imagem'=>'required|mimes:jpeg'
         ];
     }
 }
