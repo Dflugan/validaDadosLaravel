@@ -47,7 +47,7 @@ class ClienteController extends Controller
         //   'email.email'=>'Prencha com um E-mail válido',
         // ]);
 
-        dd($request->all());
+        return response()->json(['data'=>'ok']);
     }
 
     /**

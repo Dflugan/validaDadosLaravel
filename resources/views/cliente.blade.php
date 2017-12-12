@@ -15,7 +15,7 @@
                       @endforeach
                     </div>
                   @endif
-                  <form class="form-horizontal" action="{{route('cliente.store')}}" enctype="multipart/form-data" method="post">
+                  <form id="meuForm" class="form-horizontal" onsubmit="return validaForm()" action="{{route('cliente.store')}}" enctype="multipart/form-data" method="post">
                     {{ csrf_field() }}
                     <div class="form-group {{$errors->has('nome') ? 'has-error' : ''}}">
                       <label class="col-md-4 control-label">Nome</label>
@@ -26,6 +26,7 @@
                             <strong>{{$errors->first('nome')}}</strong>
                           </span>
                         @endif
+                        <span id="erro_nome" class="help-block"></span>
                       </div>
                     </div>
                     <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
@@ -37,6 +38,7 @@
                           <strong>{{$errors->first('email')}}</strong>
                         </span>
                         @endif
+                        <span id="erro_email" class="help-block"></span>
                       </div>
                     </div>
                     <div class="form-group {{$errors->has('imagem') ? 'has-error' : ''}}">
@@ -48,6 +50,7 @@
                           <strong>{{$errors->first('imagem')}}</strong>
                         </span>
                         @endif
+                        <span id="erro_imagem" class="help-block"></span>
                       </div>
                     </div>
                     <div class="form-group {{$errors->has('numero') ? 'has-error' : ''}}">
@@ -59,6 +62,7 @@
                           <strong>{{$errors->first('numero')}}</strong>
                         </span>
                         @endif
+                        <span id="erro_numero" class="help-block"></span>
                       </div>
                     </div>
                     <div class="form-group">
@@ -72,4 +76,25 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+  function validaForm(){
+    $.ajax({
+      type:'POST',
+      url:'/cliente',
+      data:$('#meuForm').serialize(),
+      success: function(res){
+        console.log(res);
+      },
+      error:function(erro){
+        console.log(erro.responseJSON);
+        var data = erro.responseJSON;
+        $.each(data, function(index,value){
+          $('#erro_'+ index).html('<strong>'+value[0]+'</strong>');
+        });
+      }
+    });
+    return false;
+  }
+</script>
+
 @endsection
